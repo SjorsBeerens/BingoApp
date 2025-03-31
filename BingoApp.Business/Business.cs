@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BingoApp.Business
 {
-    public class BingoGame
+    public class BingoGame : IBingoGame
     {
         private Random _rnd;
         private List<int> _availableNumbers;

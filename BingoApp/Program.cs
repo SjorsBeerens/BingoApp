@@ -1,17 +1,25 @@
+using System;
+using System.Windows.Forms;
+using BingoApp.Business;
+using BingoApp.Data;
+
 namespace BingoApp
 {
-    internal static class Program
+    static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new GameForm());
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // Handmatige Dependency Injection
+            IBingoGame bingoGame = new BingoGame();
+            IGameData gameData = new GameData();
+            GameForm gameForm = new GameForm(bingoGame, gameData);
+
+            Application.Run(gameForm);
         }
     }
 }

@@ -7,12 +7,14 @@ namespace BingoApp
 {
     public partial class GameForm : Form
     {
-        private BingoGame _bingoGame;
+        private readonly IBingoGame _bingoGame;
+        private readonly IGameData _gameData;
 
-        public GameForm()
+        public GameForm(IBingoGame bingoGame, IGameData gameData)
         {
             InitializeComponent();
-            _bingoGame = new BingoGame();
+            _bingoGame = bingoGame;
+            _gameData = gameData;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -76,8 +78,7 @@ namespace BingoApp
                 // Load game
                 try
                 {
-                    var gameData = GameData.Load(dlg.FileName);
-                    _bingoGame = new BingoGame();
+                    var gameData = GameDataLoader.Load(dlg.FileName);
                     _bingoGame.StartGame(gameData.MaxNumber);
                     foreach (int number in gameData.DrawnNumbers)
                     {
