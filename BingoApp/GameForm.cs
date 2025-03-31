@@ -41,7 +41,6 @@ namespace BingoApp
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            // Move previous number into ListBox
             int oldNumber = Convert.ToInt32(lblNumber.Text);
             lbxDrawnNumbers.Items.Insert(0, oldNumber);
 

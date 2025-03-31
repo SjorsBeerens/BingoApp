@@ -20,7 +20,6 @@ namespace BingoApp.Data
             }
             catch (Exception ex)
             {
-                // Log de fout of gooi een aangepaste uitzondering
                 throw new InvalidOperationException("Failed to load game data.", ex);
             }
         }

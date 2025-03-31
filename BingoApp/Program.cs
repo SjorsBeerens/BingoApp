@@ -14,7 +14,6 @@ namespace BingoApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Handmatige Dependency Injection
             IBingoGame bingoGame = new BingoGame();
             IGameData gameData = new GameData();
             GameForm gameForm = new GameForm(bingoGame, gameData);
